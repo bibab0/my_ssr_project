@@ -5,9 +5,14 @@
       <h1 class="title">
         my_ssr_demo2
       </h1>
+      <h2>{{ name }}</h2>
+      <h2>{{ counter }}</h2>
       <nuxt-link to="/about">
         about
       </nuxt-link>
+      <button @click="increment">
+        点我加一
+      </button>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -27,7 +32,35 @@
 </template>
 
 <script>
-export default {}
+import { mapState, mapMutations } from 'vuex'
+export default {
+  asyncData ({ params }) {
+    return {
+      name: 'panshihao'
+    }
+  },
+  data () {
+    return {
+      title: 'hello,panshihao'
+    }
+  },
+  computed: {
+    ...mapState(['counter'])
+  },
+  methods: {
+    ...mapMutations(['increment'])
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description', name: 'description', content: '我的ssr应用'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style>

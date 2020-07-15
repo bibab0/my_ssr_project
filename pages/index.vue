@@ -5,6 +5,9 @@
       <h1 class="title">
         my_ssr_demo2
       </h1>
+      <nuxt-link to="/about">
+        about
+      </nuxt-link>
       <div class="links">
         <a
           href="https://nuxtjs.org/"

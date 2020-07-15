@@ -3,7 +3,7 @@
     <div>
       <Logo />
       <h1 class="title">
-        my_ssr_demo
+        my_ssr_demo2
       </h1>
       <div class="links">
         <a

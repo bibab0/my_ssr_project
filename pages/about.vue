@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    about
+    <div>
+      我是about页面
+    </div>
   </div>
 </template>
 

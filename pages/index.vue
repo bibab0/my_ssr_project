@@ -27,6 +27,7 @@
           class="button--grey"
         >GitHub</a>
       </div>
+      <div>jsondata展示为{{ jsondata }}</div>
     </div>
   </div>
 </template>
@@ -41,14 +42,40 @@ export default {
   },
   data () {
     return {
-      title: 'hello,panshihao'
+      title: 'hello,panshihao',
+      jsondata: ''
     }
   },
   computed: {
     ...mapState(['counter'])
   },
+  created () {
+    this.getData()
+  },
   methods: {
-    ...mapMutations(['increment'])
+    ...mapMutations(['increment']),
+    getData () {
+      this.$req({
+        method: 'post',
+        url: '/kyj/news/list',
+        data: {
+          pageNumber: 1,
+          pageSize: 20,
+          channelId: '',
+          keyword: '',
+          beginTime: '',
+          endTime: '',
+          type: '',
+          labelList: '',
+          personal: '',
+          status: 'AUDITING'
+        }
+      })
+        .then((res) => {
+          this.jsondata = res
+        })
+        .catch(() => {})
+    }
   },
   head () {
     return {

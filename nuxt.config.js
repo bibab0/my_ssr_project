@@ -1,19 +1,7 @@
 
 export default {
-  /*
-  ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
-  */
   mode: 'universal',
-  /*
-  ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
-  */
   target: 'server',
-  /*
-  ** Headers of the page
-  ** See https://nuxtjs.org/api/configuration-head
-  */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -25,16 +13,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Global CSS
-  */
   css: [
     'element-ui/lib/theme-chalk/index.css'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
-  */
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/axios'
@@ -62,7 +43,14 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    proxy: true,
+    prefix: process.env.NODE_ENV === 'production' ? '/' : '/api/',
+    credentials: true
+  },
+  proxy: {
+    '/api/': { target: 'https://kyjvuedemo.dahe.cn', pathRewrite: { '^/api/': '' } }
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

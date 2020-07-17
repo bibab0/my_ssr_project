@@ -27,7 +27,8 @@
           class="button--grey"
         >GitHub</a>
       </div>
-      <div>jsondata展示为{{ jsondata }}</div>
+      <div>ip展示为{{ ip }}</div>
+      <div>{{ jsondata }}</div>
     </div>
   </div>
 </template>
@@ -35,14 +36,16 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-  asyncData ({ params }) {
+  async asyncData ({ app }) {
+    const ip = await app.$axios.$get('http://icanhazip.com')
     return {
-      name: 'panshihao'
+      ip
     }
   },
   data () {
     return {
       title: 'hello,panshihao',
+      name: 'hahahahahahah',
       jsondata: ''
     }
   },
@@ -54,22 +57,14 @@ export default {
   },
   methods: {
     ...mapMutations(['increment']),
+    async fetchSomething () {
+      const ip = await this.$axios.$get('http://icanhazip.com')
+      this.ip = ip
+    },
     getData () {
-      this.$req({
-        method: 'post',
-        url: '/kyj/news/list',
-        data: {
-          pageNumber: 1,
-          pageSize: 20,
-          channelId: '',
-          keyword: '',
-          beginTime: '',
-          endTime: '',
-          type: '',
-          labelList: '',
-          personal: '',
-          status: 'AUDITING'
-        }
+      this.$axios.$post('/kyj/material/list', {
+        pageNumber: 1,
+        pageSize: 20
       })
         .then((res) => {
           this.jsondata = res

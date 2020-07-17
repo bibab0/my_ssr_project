@@ -1,13 +1,11 @@
 import qs from 'qs'
 import { Message } from 'element-ui'
-// import store from '@/store/state'
-export default function ({ $axios, redirect }) {
+export default ({ store, $axios, redirect }) => {
   $axios.onRequest((config) => {
     // 登录流程控制中，根据本地是否存在token判断用户的登录情况
     // 但是即使token存在，也有可能token是过期的，所以在每次的请求头中携带token
     // 后台根据携带的token判断用户的登录情况，并返回给我们对应的状态码
-    // const token = store.state.UserToken
-    const token = 'ssss'
+    const token = store.state.UserToken
     token && (config.headers.Authorization = token)
     config.transformRequest = [function (data) { // 把data转换成formdata
       if (data) {
@@ -21,8 +19,7 @@ export default function ({ $axios, redirect }) {
   })
   $axios.onResponse((response) => {
     if (response.data.result !== 200) {
-    //   errorHandle(response.response.status, response.response.data.msg)
-      errorHandle(401, '权限不足')
+      errorHandle(response.data.result, response.data.msg)
     }
     return response
   })

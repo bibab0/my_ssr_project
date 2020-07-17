@@ -49,7 +49,7 @@ export default {
     credentials: true
   },
   proxy: {
-    '/api/': { target: 'https://kyjvuedemo.dahe.cn', pathRewrite: { '^/api/': '' } }
+    '/api/': { target: 'https://www.hnzy.cn/', pathRewrite: { '^/api/': '' } }
   },
   /*
   ** Build configuration

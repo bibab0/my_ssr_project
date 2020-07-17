@@ -36,17 +36,20 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-  async asyncData ({ app }) {
-    const ip = await app.$axios.$get('http://icanhazip.com')
-    return {
-      ip
-    }
-  },
+  // async asyncData ({ app }) {
+  //   try {
+  //     const ip = await app.$axios.$get('http://icanhazip.com')
+  //     return { ip }
+  //   } catch (error) {
+
+  //   }
+  // },
   data () {
     return {
       title: 'hello,panshihao',
       name: 'hahahahahahah',
-      jsondata: ''
+      jsondata: '',
+      ip: ''
     }
   },
   computed: {
@@ -62,14 +65,13 @@ export default {
       this.ip = ip
     },
     getData () {
-      this.$axios.$post('/kyj/material/list', {
-        pageNumber: 1,
-        pageSize: 20
-      })
-        .then((res) => {
-          this.jsondata = res
-        })
-        .catch(() => {})
+      this.$axios({
+        url: '/pc/indexmapcityinfo',
+        method: 'post',
+        data: { cityName: '郑州市' }
+      }).then((res) => {
+        this.jsondata = res
+      }).catch(() => {})
     }
   },
   head () {

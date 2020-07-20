@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <div class="aboutTitle ellipsis">
       我是about页面{{ name }}
     </div>
     <h1>{{ counter }}</h1>
@@ -25,4 +25,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+  .aboutTitle{
+    width: 50px;
+    color: #007fff;
+  }
+</style>

@@ -13,8 +13,10 @@
       <button @click="increment">
         点我加一
       </button>
-      <div>ip展示为{{ ip }}</div>
+      <div>ip展示为{{ indexData }}</div>
       <div>{{ jsondata }}</div>
+      <h3>新闻列表</h3>
+      <div>{{ newsData }}</div>
     </div>
   </div>
 </template>
@@ -23,21 +25,29 @@
 import { mapState, mapMutations } from 'vuex'
 export default {
   async asyncData ({ app }) {
-    const jsdata = await app.$axios.$post('/pc/indexmapcityinfo', {
-      cityName: '郑州市'
-    }).then((res) => {
-      return res
-    }).catch(() => {
-      return '请求出错'
-    })
-    return { ip: jsdata }
+    const [indexData, newsData] = await Promise.all([
+      app.$axios.$post('/pc/indexmapcityinfo', {
+        cityName: '郑州市'
+      }).then(res => res)
+        .catch(() => {
+          return '请求出错'
+        }),
+      app.$axios.$post('pc/news/list', {
+        page: 1,
+        size: 10,
+        channelId: 5
+      }).then(res => res)
+        .catch(() => {
+          return '请求出错'
+        })
+    ])
+    return { indexData, newsData }
   },
   data () {
     return {
       title: 'hello,panshihao',
       name: 'hahahahahahah',
-      jsondata: '',
-      ip: '1'
+      jsondata: ''
     }
   },
   computed: {

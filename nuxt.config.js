@@ -14,7 +14,8 @@ export default {
     ]
   },
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/scss/global.scss'
   ],
   plugins: [
     '@/plugins/element-ui',

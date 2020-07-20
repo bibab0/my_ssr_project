@@ -1,12 +1,11 @@
 import qs from 'qs'
 import { Message } from 'element-ui'
-export default ({ store, $axios, redirect }) => {
+export default ({ store, $axios, $cookies, redirect }) => {
   $axios.onRequest((config) => {
-    // 登录流程控制中，根据本地是否存在token判断用户的登录情况
-    // 但是即使token存在，也有可能token是过期的，所以在每次的请求头中携带token
-    // 后台根据携带的token判断用户的登录情况，并返回给我们对应的状态码
-    const token = store.state.UserToken
-    token && (config.headers.Authorization = token)
+    // 头部带上验证信息
+    config.headers['X-Token'] = $cookies.get('token') || ''
+    config.headers['X-Device-Id'] = $cookies.get('clientId') || ''
+    config.headers['X-Uid'] = $cookies.get('userId') || ''
     config.timeout = 30000
     config.transformRequest = [function (data) { // 把data转换成formdata
       if (data) {

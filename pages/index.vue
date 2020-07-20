@@ -13,20 +13,6 @@
       <button @click="increment">
         点我加一
       </button>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >GitHub</a>
-      </div>
       <div>ip展示为{{ ip }}</div>
       <div>{{ jsondata }}</div>
     </div>
@@ -42,7 +28,7 @@ export default {
     }).then((res) => {
       return res
     }).catch(() => {
-      return 'errrrrrrrrr'
+      return '请求出错'
     })
     return { ip: jsdata }
   },
@@ -50,14 +36,15 @@ export default {
     return {
       title: 'hello,panshihao',
       name: 'hahahahahahah',
-      jsondata: ''
+      jsondata: '',
+      ip: '1'
     }
   },
   computed: {
     ...mapState(['counter'])
   },
-  created () {
-    this.getData()
+  mounted () {
+    // this.getData()
   },
   methods: {
     ...mapMutations(['increment']),
@@ -70,8 +57,8 @@ export default {
         url: '/pc/indexmapcityinfo',
         method: 'post',
         data: { cityName: '郑州市' }
-      }).then((res) => {
-        this.jsondata = res
+      }).then(({ data }) => {
+        this.jsondata = data
       }).catch(() => {})
     }
   },
@@ -106,17 +93,5 @@ export default {
   font-size: 100px;
   color: #35495e;
   letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>

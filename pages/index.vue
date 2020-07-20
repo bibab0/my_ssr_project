@@ -13,7 +13,8 @@
       <button @click="increment">
         点我加一
       </button>
-      <div>ip展示为{{ indexData }}</div>
+      <h3>首页数据</h3>
+      <div>{{ indexData }}</div>
       <div>{{ jsondata }}</div>
       <h3>新闻列表</h3>
       <div>{{ newsData }}</div>

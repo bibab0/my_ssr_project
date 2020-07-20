@@ -12,10 +12,11 @@
     "lint": "npm run lint:js",
     "test": "jest",
     "generate": "nuxt generate",
-    "analyze":"nuxt build -a"
+    "analyze": "nuxt build -a"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.11.0",
+    "cookie-universal-nuxt": "^2.1.4",
     "element-ui": "^2.13.2",
     "nuxt": "^2.13.0"
   },

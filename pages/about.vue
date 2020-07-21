@@ -13,7 +13,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-  // layout: 'default-white',
+  layout: 'default-white',
   asyncData (context) {
     return ({ name: 'pansihao' })
   },

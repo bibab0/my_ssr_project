@@ -13,6 +13,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  loading: {
+    color: 'blue',
+    height: '3px'
+  },
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '~/assets/scss/global.scss'

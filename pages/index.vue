@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
+      <el-carousel trigger="click" height="350px">
+        <el-carousel-item v-for="item in loopFocus" :key="item.id">
+          <img :src="item.src" :alt="item.id">
+        </el-carousel-item>
+      </el-carousel>
       <h1 class="title">
         my_ssr_demo2
       </h1>
@@ -48,7 +52,17 @@ export default {
     return {
       title: 'hello,panshihao',
       name: 'hahahahahahah',
-      jsondata: ''
+      jsondata: '',
+      loopFocus: [{
+        src: 'https://zyimg.dahe.cn/image/png/20200326/1585187025295782.png?imageMogr2/thumbnail/1920>/interlace/1',
+        id: 1
+      }, {
+        src: 'https://zyimg.dahe.cn/image/jpeg/20200326/1585187179804871.jpg?imageMogr2/thumbnail/1920>/interlace/1',
+        id: 2
+      }, {
+        src: 'https://zyimg.dahe.cn/image/jpeg/20191115/1573802284620100.jpg?imageMogr2/thumbnail/1920>/interlace/1',
+        id: 3
+      }]
     }
   },
   computed: {

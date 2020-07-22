@@ -72,17 +72,17 @@ export default {
         this.jsondata = data
       }).catch(() => {})
     }
-  },
-  head () {
-    return {
-      title: this.title,
-      meta: [
-        {
-          hid: 'description', name: 'description', content: '我的ssr应用'
-        }
-      ]
-    }
   }
+  // head () {
+  //   return {
+  //     title: this.title,
+  //     meta: [
+  //       {
+  //         hid: 'description', name: 'description', content: '我的ssr应用'
+  //       }
+  //     ]
+  //   }
+  // }
 }
 </script>
 

@@ -1,28 +1,19 @@
 <template>
-  <div class="container">
-    <div>
-      <el-carousel trigger="click" height="350px">
-        <el-carousel-item v-for="item in loopFocus" :key="item.id">
-          <img :src="item.src" :alt="item.id">
-        </el-carousel-item>
-      </el-carousel>
-      <h1 class="title">
-        my_ssr_demo2
-      </h1>
-      <h2>{{ name }}</h2>
-      <h2>{{ counter }}</h2>
-      <nuxt-link to="/about">
-        about
-      </nuxt-link>
-      <button @click="increment">
-        点我加一
-      </button>
-      <h3>首页数据</h3>
-      <div>{{ indexData }}</div>
-      <div>{{ jsondata }}</div>
-      <h3>新闻列表</h3>
-      <div>{{ newsData }}</div>
-    </div>
+  <div>
+    <el-carousel trigger="click" height="350px">
+      <el-carousel-item v-for="item in loopFocus" :key="item.id">
+        <img :src="item.src" :alt="item.id">
+      </el-carousel-item>
+    </el-carousel>
+    <h2>{{ counter }}</h2>
+    <button @click="increment">
+      点我加一
+    </button>
+    <h3>首页数据</h3>
+    <div>{{ indexData }}</div>
+    <div>{{ jsondata }}</div>
+    <h3>新闻列表</h3>
+    <div>{{ newsData }}</div>
   </div>
 </template>
 
@@ -51,7 +42,6 @@ export default {
   data () {
     return {
       title: 'hello,panshihao',
-      name: 'hahahahahahah',
       jsondata: '',
       loopFocus: [{
         src: 'https://zyimg.dahe.cn/image/png/20200326/1585187025295782.png?imageMogr2/thumbnail/1920>/interlace/1',
@@ -100,23 +90,4 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-</style>
+<style></style>

@@ -85,3 +85,19 @@ li {
   border-radius: 2px;
   background-color: #409EFF;
 }
+
+.activeNav {
+  color: #E53A40 !important;
+}
+
+.activeNav::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  border-radius: 3px;
+  top: 25px;
+  left: calc(50% - 15px);
+  background: #E53A40;
+}

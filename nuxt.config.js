@@ -14,6 +14,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  router: {
+    linkExactActiveClass: 'activeNav'
+  },
   loading: {
     color: 'blue',
     height: '3px'

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Logo />
+    <Nav />
     <Nuxt />
   </div>
 </template>
 <script>
-import Logo from '@/components/Logo'
+import Nav from '@/components/Nav'
 export default {
   components: {
-    Logo
+    Nav
   }
 }
 </script>

@@ -48,9 +48,10 @@
       class="searchInput"
       prefix-icon="el-icon-search"
       placeholder="请输入关键字"
+      @change="goSearch"
     />
     <div class="loginBox">
-      <a href>登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href>登录</a>&nbsp;·&nbsp;
       <a href>注册</a>
     </div>
   </div>
@@ -66,6 +67,12 @@ export default {
   methods: {
     toIndex () {
       this.$router.push('/')
+    },
+    goSearch () {
+      this.$message({
+        message: '跳转搜索页面',
+        type: 'success'
+      })
     }
   }
 }
